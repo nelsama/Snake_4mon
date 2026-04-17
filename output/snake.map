@@ -1,0 +1,264 @@
+Modules list:
+-------------
+startup.o:
+    ZEROPAGE          Offs=000000  Size=000006  Align=00001  Fill=0000
+    STARTUP           Offs=000000  Size=000047  Align=00001  Fill=0000
+main.o:
+    CODE              Offs=000000  Size=000B53  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=0001CC  Align=00001  Fill=0000
+    BSS               Offs=000000  Size=0002D7  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(add.o):
+    CODE              Offs=000B53  Size=00001C  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(addysp.o):
+    CODE              Offs=000B6F  Size=00000E  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(call.o):
+    CODE              Offs=000B7D  Size=000007  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(decax1.o):
+    CODE              Offs=000B84  Size=000007  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(decsp1.o):
+    CODE              Offs=000B8B  Size=000009  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(decsp3.o):
+    CODE              Offs=000B94  Size=00000D  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(decsp4.o):
+    CODE              Offs=000BA1  Size=00000D  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(decsp5.o):
+    CODE              Offs=000BAE  Size=00000D  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(icmp.o):
+    CODE              Offs=000BBB  Size=00002E  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(incaxy.o):
+    CODE              Offs=000BE9  Size=00000B  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(incsp1.o):
+    CODE              Offs=000BF4  Size=000007  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(incsp2.o):
+    CODE              Offs=000BFB  Size=000016  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(incsp3.o):
+    CODE              Offs=000C11  Size=000005  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(incsp4.o):
+    CODE              Offs=000C16  Size=000005  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(incsp5.o):
+    CODE              Offs=000C1B  Size=000005  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(incsp8.o):
+    CODE              Offs=000C20  Size=000005  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(jmpvec.o):
+    DATA              Offs=000000  Size=000003  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(ldaxsp.o):
+    CODE              Offs=000C25  Size=000009  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(mul8.o):
+    CODE              Offs=000C2E  Size=00003A  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(popptr1.o):
+    CODE              Offs=000C68  Size=00000E  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(pusha.o):
+    CODE              Offs=000C76  Size=000016  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(pushax.o):
+    CODE              Offs=000C8C  Size=00001A  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(pushw.o):
+    CODE              Offs=000CA6  Size=00000F  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(udiv.o):
+    CODE              Offs=000CB5  Size=00004F  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(umod.o):
+    CODE              Offs=000D04  Size=000011  Align=00001  Fill=0000
+D:\cc65\lib\none.lib(zeropage.o):
+    ZEROPAGE          Offs=000006  Size=00001A  Align=00001  Fill=0000
+
+
+Segment list:
+-------------
+Name                   Start     End    Size  Align
+----------------------------------------------------
+ZEROPAGE              000020  00003F  000020  00001
+STARTUP               000800  000846  000047  00001
+CODE                  000847  00155B  000D15  00001
+RODATA                00155C  001727  0001CC  00001
+DATA                  001728  00172A  000003  00001
+BSS                   00172B  001A01  0002D7  00001
+
+
+Exports list by name:
+---------------------
+__BSS_RUN__               00172B RLA    __BSS_SIZE__              0002D7 REA    
+__STARTUP__               000001 REA    _main                     00104F RLA    
+addysp                    0013B7 RLA    callax                    0013C4 RLA    
+decax1                    0013CB RLA    decsp1                    0013D2 RLA    
+decsp3                    0013DB RLA    decsp4                    0013E8 RLA    
+decsp5                    0013F5 RLA    incaxy                    001432 RLA    
+incsp1                    00143B RLA    incsp2                    00144A RLA    
+incsp3                    001458 RLA    incsp4                    00145D RLA    
+incsp5                    001462 RLA    incsp8                    001467 RLA    
+jmpvec                    001728 RLA    ldaxysp                   00146E RLA    
+popptr1                   0014AF RLA    ptr1                      00002E RLZ    
+ptr4                      000034 RLZ    pusha                     0014C1 RLA    
+pusha0                    0014D5 RLA    pushax                    0014D7 RLA    
+pushw                     0014ED RLA    sp                        000026 RLZ    
+sreg                      000028 RLZ    tmp1                      000036 RLZ    
+tosadda0                  00139A RLA    tosicmp0                  001402 RLA    
+tosudiva0                 0014FC RLA    tosumoda0                 00154B RLA    
+tosumula0                 001475 RLA    udiv16                    00150D RLA    
+
+
+
+Exports list by value:
+----------------------
+__STARTUP__               000001 REA    sp                        000026 RLZ    
+sreg                      000028 RLZ    ptr1                      00002E RLZ    
+ptr4                      000034 RLZ    tmp1                      000036 RLZ    
+__BSS_SIZE__              0002D7 REA    _main                     00104F RLA    
+tosadda0                  00139A RLA    addysp                    0013B7 RLA    
+callax                    0013C4 RLA    decax1                    0013CB RLA    
+decsp1                    0013D2 RLA    decsp3                    0013DB RLA    
+decsp4                    0013E8 RLA    decsp5                    0013F5 RLA    
+tosicmp0                  001402 RLA    incaxy                    001432 RLA    
+incsp1                    00143B RLA    incsp2                    00144A RLA    
+incsp3                    001458 RLA    incsp4                    00145D RLA    
+incsp5                    001462 RLA    incsp8                    001467 RLA    
+ldaxysp                   00146E RLA    tosumula0                 001475 RLA    
+popptr1                   0014AF RLA    pusha                     0014C1 RLA    
+pusha0                    0014D5 RLA    pushax                    0014D7 RLA    
+pushw                     0014ED RLA    tosudiva0                 0014FC RLA    
+udiv16                    00150D RLA    tosumoda0                 00154B RLA    
+jmpvec                    001728 RLA    __BSS_RUN__               00172B RLA    
+
+
+
+Imports list:
+-------------
+__BSS_RUN__ ([linker generated]):
+    startup.o                 src\startup.s(12)
+__BSS_SIZE__ ([linker generated]):
+    startup.o                 src\startup.s(12)
+__STARTUP__ (startup.o):
+    main.o                    src\main.s(13)
+_main (main.o):
+    startup.o                 src\startup.s(11)
+addysp (addysp.o):
+    incsp8.o                  runtime/incsp8.s(8)
+    incsp5.o                  runtime/incsp5.s(8)
+    incsp4.o                  runtime/incsp4.s(8)
+    incsp3.o                  runtime/incsp3.s(8)
+callax (call.o):
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+decax1 (decax1.o):
+    main.o                    src\main.s(1620)
+decsp1 (decsp1.o):
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+decsp3 (decsp3.o):
+    main.o                    src\main.s(1620)
+decsp4 (decsp4.o):
+    main.o                    src\main.s(1620)
+decsp5 (decsp5.o):
+    main.o                    src\main.s(1620)
+incaxy (incaxy.o):
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+incsp1 (incsp1.o):
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+incsp2 (incsp2.o):
+    popptr1.o                 runtime/popptr1.s(8)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+incsp3 (incsp3.o):
+    main.o                    src\main.s(1620)
+incsp4 (incsp4.o):
+    main.o                    src\main.s(1620)
+incsp5 (incsp5.o):
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+incsp8 (incsp8.o):
+    main.o                    src\main.s(1620)
+jmpvec (jmpvec.o):
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+ldaxysp (ldaxsp.o):
+    main.o                    src\main.s(1620)
+popptr1 (popptr1.o):
+    umod.o                    runtime/umod.s(8)
+    udiv.o                    runtime/udiv.s(9)
+    mul8.o                    runtime/mul8.s(9)
+ptr1 (zeropage.o):
+    udiv.o                    runtime/udiv.s(10)
+    pushw.o                   runtime/pushw.s(9)
+    popptr1.o                 runtime/popptr1.s(9)
+    mul8.o                    runtime/mul8.s(10)
+    call.o                    runtime/call.s(8)
+    main.o                    src\main.s(11)
+ptr4 (zeropage.o):
+    umod.o                    runtime/umod.s(9)
+    udiv.o                    runtime/udiv.s(10)
+    mul8.o                    runtime/mul8.s(10)
+pusha (pusha.o):
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+pusha0 (pushax.o):
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+pushax (pushax.o):
+    pushw.o                   runtime/pushw.s(8)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+pushw (pushw.o):
+    main.o                    src\main.s(1620)
+sp (zeropage.o):
+    addysp.o                  runtime/addysp.s(8)
+    pushax.o                  runtime/pushax.s(8)
+    pusha.o                   runtime/pusha.s(8)
+    popptr1.o                 runtime/popptr1.s(9)
+    ldaxsp.o                  runtime/ldaxsp.s(8)
+    incsp2.o                  runtime/incsp2.s(8)
+    incsp1.o                  runtime/incsp1.s(8)
+    icmp.o                    runtime/icmp.s(9)
+    decsp5.o                  runtime/decsp5.s(8)
+    decsp4.o                  runtime/decsp4.s(8)
+    decsp3.o                  runtime/decsp3.s(8)
+    decsp1.o                  runtime/decsp1.s(8)
+    add.o                     runtime/add.s(12)
+    main.o                    src\main.s(10)
+    startup.o                 src\startup.s(13)
+sreg (zeropage.o):
+    umod.o                    runtime/umod.s(9)
+    udiv.o                    runtime/udiv.s(10)
+    icmp.o                    runtime/icmp.s(9)
+    main.o                    src\main.s(10)
+tmp1 (zeropage.o):
+    incaxy.o                  runtime/incaxy.s(8)
+    add.o                     runtime/add.s(12)
+tosadda0 (add.o):
+    main.o                    src\main.s(1620)
+tosicmp0 (icmp.o):
+    main.o                    src\main.s(1620)
+tosudiva0 (udiv.o):
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+tosumoda0 (umod.o):
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+tosumula0 (mul8.o):
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+    main.o                    src\main.s(1620)
+udiv16 (udiv.o):
+    umod.o                    runtime/umod.s(8)
+
