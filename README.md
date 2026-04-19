@@ -16,7 +16,7 @@ Un clásico juego de Snake implementado en **C89 estricto** para el procesador *
 ## 🛠️ Especificaciones Técnicas
 
 ### Hardware Objetivo
-- **CPU**: MOS 6502 @ 1MHz
+- **CPU**: MOS 6502 @ 3.375MHz
 - **Audio**: SID 6581 mapeado en `$D400-$D41F`
 - **Plataforma**: Tang Nano 9K FPGA con Monitor 6502 v2.2.0+
 - **Display**: Terminal serie compatible con códigos ANSI
