@@ -6,21 +6,43 @@ Un clásico juego de Snake implementado en **C89 estricto** para el procesador *
 
 ## ✨ Características
 
-- 🎵 **Audio SID 6581 polifónico**: Jingle de introducción, efectos al comer comida normal/bonus, melodía de Game Over, sonido al subir de nivel y **melodía de fondo** que se acelera con la partida. Usa 2 voces simultáneas (voz 1 para fondo, voz 2 para efectos).
+### 🎵 Audio SID 6581 multicanal
+- **Voz 1**: Melodía de fondo continua (latido grave que se acelera con la velocidad del juego). Nunca se interrumpe.
+- **Voz 2**: Efectos de sonido (comer comida, food bonus, aceleración). Suenan sin cortar el fondo.
+- Jingles polifónicos en introducción y Game Over usando ambas voces.
 
-- 🎨 **Gráficos ANSI**: Paredes con **fondo cyan sólido**, cabeza direccional (`>` `<` `^` `v`) en amarillo, cuerpo `o` verde, comida `*` roja y comida bonus `*` magenta.
+### 🎨 Gráficos ANSI
+- Paredes con **fondo cyan sólido** (bloques pintados)
+- Cabeza **direccional**: `>` `<` `^` `v` según el movimiento
+- Cuerpo `o` en verde, comida `*` roja, comida bonus `*` magenta
 
-- 🎮 **Controles**: WASD o flechas ANSI para movimiento. **Tecla `P`** para pausar/reanudar. Menú post-partida con `P` jugar de nuevo o `E` salir al monitor.
+### 🎮 Controles
+- **WASD** o **Flechas** para movimiento
+- **Tecla `P`** para pausar/reanudar la partida
+- Menú post-partida: `P` jugar de nuevo, `E` salir al monitor
+- Textos e interfaz en español
 
-- ⚡ **Dificultad progresiva**: Velocidad inicial lenta (300ms) que se acelera al comer (-12ms por comida, mínimo 80ms). El nivel sube cada 5 puntos.
+### ⚡ Dificultad progresiva
+- Velocidad inicial lenta (**300ms**) que se acelera al comer (**-12ms** por comida)
+- Velocidad máxima: **80ms**
+- **Nivel** sube cada 5 puntos: `Puntaje: 42  Nv:9`
 
-- 🎁 **Comida bonus**: 1 de cada 8 comidas aparece en **magenta**. Da **+3 segmentos** en vez de +1. Expira tras ~20 frames si no se come. Tiene su propio efecto de sonido.
+### 🎁 Comida bonus
+- 1 de cada 8 comidas aparece en **magenta**
+- Da **+3 segmentos** en vez de +1
+- Expira tras ~20 frames si no se come
+- Tiene su propio efecto de sonido
 
-- ♻️ **Renderizado incremental**: Solo se redibujan las celdas que cambian (3-4 por frame), reduciendo el tráfico UART ~96%.
+### ♻️ Renderizado incremental
+- Solo se redibujan las celdas que cambian (3-4 por frame)
+- **~96% menos tráfico UART** vs redibujo completo
 
-- 📊 **Puntuación a 3 dígitos** con nivel visible: `Puntaje: 42  Nv:9`. También se muestra al finalizar.
+### 💾 Eficiencia
+- ~745 bytes de RAM utilizados
+- Binario de ~7KB (carga en $0800)
+- Lookup tables para `gotoxy` (evita divisiones en 6502)
 
-- 💾 **Uso eficiente de RAM**: ~745 bytes de RAM utilizados. Binario de ~7KB.
+---
 
 ## 🛠️ Especificaciones Técnicas
 
