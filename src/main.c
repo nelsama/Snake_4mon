@@ -129,6 +129,7 @@ static uint16_t bg_tick;           /* contador de frames musicales */
 static void sid_init(void);
 static void sid_play_poly(uint16_t f1, uint16_t f2, uint8_t ms);
 static void sid_play_jingle(const uint16_t *n1, const uint16_t *n2, const uint8_t *d, uint8_t count);
+static void sid_play_v2(uint16_t f, uint8_t ms);
 static void sid_off(void);
 static void sid_bg_melody(void);
 static void reset_game(void);
@@ -146,12 +147,12 @@ static void update(void);
    MOTOR DE SONIDO SID
    ========================================================================== */
 static void sid_init(void) {
-    SID_VOL = 0x0F;
+    SID_VOL = 0x09;     /* Volumen maestro 9/15 (un poco mas bajo) */
     SID_PW_LO_1 = 0x00; SID_PW_HI_1 = 0x08;
     SID_PW_LO_2 = 0x00; SID_PW_HI_2 = 0x08;
-    /* Voz 1: ADSR para melodia de fondo (sustain alto para que se oiga) */
+    /* Voz 1: ADSR para melodia de fondo (muy suave, casi ambiental) */
     SID_AD_1 = 0x04;    /* Attack=0 (2ms), Decay=4 (48ms) */
-    SID_SR_1 = 0x82;    /* Sustain=8 (medio), Release=2 (120ms) */
+    SID_SR_1 = 0x12;    /* Sustain=1 (minimo), Release=2 (120ms) */
     /* Voz 2: ADSR para efectos (corto y seco) */
     SID_AD_2 = 0x02;    /* Attack=0 (2ms), Decay=2 (24ms) */
     SID_SR_2 = 0x01;    /* Sustain=0, Release=1 (24ms) */
@@ -178,6 +179,17 @@ static void sid_play_jingle(const uint16_t *n1, const uint16_t *n2, const uint8_
     }
 }
 
+/* Toca una nota en SOLO voz 2 (sin tocar voz 1) */
+static void sid_play_v2(uint16_t f, uint8_t ms) {
+    SID_FREQ_LO_2 = (uint8_t)f;
+    SID_FREQ_HI_2 = (uint8_t)(f >> 8);
+    rom_delay_ms(2);
+    SID_CTRL_2 = 0x41;
+    rom_delay_ms(ms);
+    SID_CTRL_2 = 0x40;
+    rom_delay_ms(5);
+}
+
 static void sid_off(void) {
     SID_CTRL_1 = 0x00;
     SID_CTRL_2 = 0x00;
@@ -192,7 +204,7 @@ static void sid_bg_melody(void) {
     uint8_t rate, idx;
     
     /* La frecuencia del latido aumenta con la velocidad */
-    rate = 3 + delay_ms / 60;  /* ~8 frames al inicio, ~4 al maximo */
+    rate = 2 + delay_ms / 100;  /* ~1.5s entre notas al inicio, ~0.3s al maximo */
     
     idx = (bg_tick / rate) & 3;
     
@@ -224,12 +236,10 @@ static const uint8_t  go_d[]  = { 80, 80, 100, 140 };
 
 /* Efecto de aceleración (ascendente rápido) */
 static const uint16_t speed_n1[] = { NOTE_C4, NOTE_E4, NOTE_G4, NOTE_C5 };
-static const uint16_t speed_n2[] = { NOTE_E4, NOTE_G4, NOTE_C5, NOTE_E5 };
 static const uint8_t  speed_d[]  = { 20, 20, 25, 35 };
 
 /* Efecto de comida bonus */
 static const uint16_t bonus_n1[] = { NOTE_C5, NOTE_E5, NOTE_C5 };
-static const uint16_t bonus_n2[] = { NOTE_G4, NOTE_C5, NOTE_G4 };
 static const uint8_t  bonus_d[]  = { 15, 20, 30 };
 
 /* ==========================================================================
@@ -538,22 +548,27 @@ static void update(void) {
                 sx[len-1-i] = tx; sy[len-1-i] = ty;
                 grid[ty * WIDTH + tx] = 1;
             }
-            /* Sonido de bonus */
-            sid_play_jingle(bonus_n1, bonus_n2, bonus_d, 3);
+            /* Sonido de bonus (voz 2 solamente) */
+            for (i = 0; i < 3; i++) {
+                sid_play_v2(bonus_n1[i], bonus_d[i]);
+            }
         } else {
             len++;
             sx[len-1] = tx; sy[len-1] = ty;
             grid[ty * WIDTH + tx] = 1;
-            sid_play_poly(NOTE_C4, NOTE_E4, 25);
+            sid_play_v2(NOTE_C4, 25);
         }
         
         /* Acelerar juego */
         new_level = (DELAY_START - delay_ms) / DELAY_STEP;
         if (delay_ms > DELAY_MIN) delay_ms -= DELAY_STEP;
         
-        /* Sonido de aceleración si se subió de nivel */
+        /* Sonido de aceleración si se subió de nivel (voz 2 solamente) */
         if ((DELAY_START - delay_ms) / DELAY_STEP > new_level) {
-            sid_play_jingle(speed_n1, speed_n2, speed_d, 4);
+            uint8_t si;
+            for (si = 0; si < 4; si++) {
+                sid_play_v2(speed_n1[si], speed_d[si]);
+            }
         }
         
         spawn_food();
